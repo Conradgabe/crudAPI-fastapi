@@ -7,7 +7,7 @@ app = FastAPI()
 @app.get("/api", status_code=200)
 async def root(slack_name: str, track: str):
     current_day = localtime().tm_wday
-    utc_time = datetime.now()
+    utc_time = datetime.utcnow()
     github_file_URL = "https://github.com/Conradgabe/HNG-T-Scripts/blob/main/main.py"
     github_repo_URL = "https://github.com/Conradgabe/HNG-T-Scripts"
     
@@ -19,7 +19,7 @@ async def root(slack_name: str, track: str):
     data = {
         "slack_name": slack_name,
         "current_day": current_day,
-        "utc_time": utc_time.strftime("%y-%m-%dT%H:%M:%SZ"),
+        "utc_time": utc_time.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "track": track,
         "github_file_url": github_file_URL,
         "github_repo_url": github_repo_URL,
