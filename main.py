@@ -5,7 +5,7 @@ from fastapi import FastAPI
 app = FastAPI()
 
 @app.get("/", status_code=200)
-async def root(slack_name: str | None = None, track: str | None = None):
+async def root(slack_name: str, track: str):
     current_day = localtime().tm_wday
     utc_time = datetime.now()
     github_file_URL = "https://github.com/Conradgabe/HNG-T-Scripts/blob/main/main.py"
