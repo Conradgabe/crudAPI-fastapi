@@ -1,0 +1,28 @@
+from time import localtime
+from datetime import datetime
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def root(slack_name: str | None = None, track: str | None = None):
+    current_day = localtime().tm_wday
+    utc_time = datetime.now()
+    github_repo_URL = "https://github.com/Conradgabe/HNG-T-Scripts"
+    
+    day_of_week = ["Monday", "Tuesday", "Wednesday", "Thurday", "Friday", "Saturday", "Sunday"]
+
+    if current_day:
+        current_day = day_of_week[current_day]
+
+    data = {
+        "slack_name": slack_name,
+        "current_day": current_day,
+        "utc_time": utc_time,
+        "track": track,
+        "github_file_URL": "github_file_url",
+        "github_repo_URL": github_repo_URL,
+        "status_code": "status_code"
+    }
+
+    return data
