@@ -11,7 +11,7 @@ async def root(slack_name: str, track: str):
     github_file_URL = "https://github.com/Conradgabe/HNG-T-Scripts/blob/main/main.py"
     github_repo_URL = "https://github.com/Conradgabe/HNG-T-Scripts"
     
-    day_of_week = ["Monday", "Tuesday", "Wednesday", "Thurday", "Friday", "Saturday", "Sunday"]
+    day_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
     if current_day:
         current_day = day_of_week[current_day]
@@ -19,10 +19,10 @@ async def root(slack_name: str, track: str):
     data = {
         "slack_name": slack_name,
         "current_day": current_day,
-        "utc_time": utc_time,
+        "utc_time": utc_time.strftime("%y-%m-%dT%H:%M:%SZ"),
         "track": track,
-        "github_file_URL": github_file_URL,
-        "github_repo_URL": github_repo_URL,
+        "github_file_url": github_file_URL,
+        "github_repo_url": github_repo_URL,
         "status_code": 200,
     }
 
