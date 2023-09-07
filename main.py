@@ -4,10 +4,11 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/", status_code=200)
 async def root(slack_name: str | None = None, track: str | None = None):
     current_day = localtime().tm_wday
     utc_time = datetime.now()
+    github_file_URL = "https://github.com/Conradgabe/HNG-T-Scripts/blob/main/main.py"
     github_repo_URL = "https://github.com/Conradgabe/HNG-T-Scripts"
     
     day_of_week = ["Monday", "Tuesday", "Wednesday", "Thurday", "Friday", "Saturday", "Sunday"]
@@ -20,9 +21,9 @@ async def root(slack_name: str | None = None, track: str | None = None):
         "current_day": current_day,
         "utc_time": utc_time,
         "track": track,
-        "github_file_URL": "github_file_url",
+        "github_file_URL": github_file_URL,
         "github_repo_URL": github_repo_URL,
-        "status_code": "status_code"
+        "status_code": 200,
     }
 
     return data
