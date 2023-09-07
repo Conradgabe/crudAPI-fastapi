@@ -4,7 +4,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/", status_code=200)
+@app.get("/api", status_code=200)
 async def root(slack_name: str, track: str):
     current_day = localtime().tm_wday
     utc_time = datetime.now()
